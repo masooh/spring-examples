@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Could not resolve placeholder 'b' in string value "${b}" as only a and c are defined -->
+    <context:property-placeholder location="placeholder/second.properties" />
+
+    <!-- will not be used as first placeholder fails -->
+    <context:property-placeholder location="placeholder/first.properties" />
+
+    <bean class="PropertyPlaceholderTest$PropertyHolder">
+        <property name="a" value="${a}" />
+        <property name="b" value="${b}" />
+        <property name="c" value="${c}" />
+    </bean>
+
+</beans>
